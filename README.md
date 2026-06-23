@@ -1,17 +1,12 @@
 🛠️ Sistema de Controle de Chamados
-<div align="center">
-https://adoptium.net
-https://spring.io/projects/spring-boot
-https://angular.io
-https://postgresql.org
-LICENSE
-Sistema completo de gerenciamento de chamados técnicos
-Desenvolvido com Java Spring Boot + Angular
-🚀 Como Rodar • 📸 Screenshots • 📡 API • 👤 Autor
-</div>
+
+Aplicação full-stack para gerenciamento de chamados técnicos, desenvolvida com Java Spring Boot e Angular.
+
+
 📋 Sobre o Projeto
 Este sistema foi desenvolvido para demonstrar habilidades full-stack em um cenário real de gestão de chamados técnicos. Ideal para portfólio de desenvolvedor Java/Angular.
 ✨ Funcionalidades Principais
+
 Table
 Módulo	Descrição	Status
 🎫 CRUD de Chamados	Criar, listar, editar e excluir chamados	✅ Concluído
@@ -73,8 +68,11 @@ Edite backend/src/main/resources/application.properties:
 properties
 
 spring.datasource.url=jdbc:postgresql://localhost:5432/chamados_db
+
 spring.datasource.username=postgres
+
 spring.datasource.password=SUA_SENHA
+
 spring.jpa.hibernate.ddl-auto=update
 
 3️⃣ Inicie o Backend
