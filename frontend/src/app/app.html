@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <i class="bi bi-headset"></i> Sistema de Chamados
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        @if (authService.isLoggedIn$ | async) {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+              <i class="bi bi-speedometer2"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/chamados" routerLinkActive="active">
+              <i class="bi bi-list-ul"></i> Lista de Chamados
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/chamados/novo" routerLinkActive="active">
+              <i class="bi bi-plus-circle"></i> Novo Chamado
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="logout()">
+              <i class="bi bi-box-arrow-right"></i> Sair
+            </a>
+          </li>
+        } @else {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <div class="container">
+    <small>Sistema de Controle de Chamados © 2026</small>
+  </div>
+</footer>

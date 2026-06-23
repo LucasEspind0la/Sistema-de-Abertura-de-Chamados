@@ -1,0 +1,74 @@
+<h2 class="mb-4">
+  <i class="bi" [ngClass]="editando ? 'bi-pencil-square' : 'bi-plus-circle'"></i>
+  {{ editando ? 'Editar' : 'Novo' }} Chamado
+</h2>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="chamadoForm" (ngSubmit)="salvar()">
+      
+      <div class="mb-3">
+        <label class="form-label">Título *</label>
+        <input type="text" class="form-control" formControlName="titulo" 
+               placeholder="Ex: Portão não abre">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Descrição *</label>
+        <textarea class="form-control" formControlName="descricao" rows="3"
+                  placeholder="Descreva o problema..."></textarea>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Prioridade *</label>
+          <select class="form-select" formControlName="prioridade">
+            @for (p of prioridadeList; track p) {
+              <option [value]="p">{{ p }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Status *</label>
+          <select class="form-select" formControlName="status">
+            @for (s of statusList; track s) {
+              <option [value]="s">{{ s }}</option>
+            }
+          </select>
+        </div>
+
+                <div class="col-md-4 mb-3">
+          <label class="form-label">Categoria *</label>
+          <select class="form-select" formControlName="categoria">
+            @for (c of categoriaList; track c) {
+              <option [value]="c">{{ c }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Solicitante *</label>
+          <input type="text" class="form-control" formControlName="solicitante"
+                 placeholder="Nome do solicitante">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Responsável</label>
+        <input type="text" class="form-control" formControlName="responsavel"
+               placeholder="Técnico responsável (opcional)">
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-check-lg"></i> {{ editando ? 'Atualizar' : 'Salvar' }}
+        </button>
+        <button type="button" class="btn btn-outline-secondary" (click)="voltar()">
+          <i class="bi bi-x-lg"></i> Cancelar
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

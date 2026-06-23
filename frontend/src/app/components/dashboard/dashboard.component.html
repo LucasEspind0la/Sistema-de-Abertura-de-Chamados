@@ -1,0 +1,127 @@
+<h2 class="mb-4"><i class="bi bi-speedometer2"></i> Dashboard</h2>
+
+<div class="row">
+  <div class="col-md-3 mb-3">
+    <div class="card bg-primary text-white">
+      <div class="card-body">
+        <h5 class="card-title">Total</h5>
+        <h2>{{ totalChamados }}</h2>
+        <small>chamados cadastrados</small>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-3 mb-3">
+    <div class="card bg-warning text-dark">
+      <div class="card-body">
+        <h5 class="card-title">Abertos</h5>
+        <h2>{{ abertos }}</h2>
+        <small>aguardando atendimento</small>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-3 mb-3">
+    <div class="card bg-info text-white">
+      <div class="card-body">
+        <h5 class="card-title">Em Andamento</h5>
+        <h2>{{ emAndamento }}</h2>
+        <small>sendo atendidos</small>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-3 mb-3">
+    <div class="card bg-success text-white">
+      <div class="card-body">
+        <h5 class="card-title">Resolvidos</h5>
+        <h2>{{ resolvidos }}</h2>
+        <small>finalizados</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (altaPrioridade > 0) {
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-danger">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <strong>Atenção!</strong> Existem {{ altaPrioridade }} chamado(s) com prioridade ALTA.
+      </div>
+    </div>
+  </div>
+}
+
+<div class="row mt-4">
+  <div class="col-md-4 mb-3">
+    <div class="card bg-warning text-dark">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-lightning-charge"></i> Elétrica</h5>
+        <h2>{{ eletrica }}</h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 mb-3">
+    <div class="card bg-info text-white">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-droplet"></i> Hidráulica</h5>
+        <h2>{{ hidraulica }}</h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 mb-3">
+    <div class="card bg-danger text-white">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-shield-check"></i> Segurança</h5>
+        <h2>{{ seguranca }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-header">
+    <h5 class="mb-0"><i class="bi bi-clock-history"></i> Últimos Chamados</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Solicitante</th>
+          <th>Prioridade</th>
+          <th>Status</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (c of chamados | slice:0:5; track c.id) {
+          <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.titulo }}</td>
+            <td>{{ c.solicitante }}</td>
+            <td>
+              <span class="badge" [ngClass]="{
+                'bg-danger': c.prioridade === 'ALTA',
+                'bg-warning text-dark': c.prioridade === 'MEDIA',
+                'bg-primary': c.prioridade === 'BAIXA'
+              }">{{ c.prioridade }}</span>
+            </td>
+            <td>
+              <span class="badge" [ngClass]="{
+                'bg-primary': c.status === 'ABERTO',
+                'bg-warning text-dark': c.status === 'EM_ANDAMENTO',
+                'bg-success': c.status === 'RESOLVIDO'
+              }">{{ c.status }}</span>
+            </td>
+            <td>{{ c.dataCriacao | date:'dd/MM/yyyy HH:mm' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

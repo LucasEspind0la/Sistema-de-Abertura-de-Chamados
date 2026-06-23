@@ -1,0 +1,118 @@
+<h2 class="mb-4"><i class="bi bi-list-ul"></i> Lista de Chamados</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <label class="form-label">Status</label>
+        <select class="form-select" [(ngModel)]="filtroStatus" (change)="aplicarFiltros()">
+          <option value="">Todos</option>
+          @for (s of statusList; track s) {
+            <option [value]="s">{{ s }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Prioridade</label>
+        <select class="form-select" [(ngModel)]="filtroPrioridade" (change)="aplicarFiltros()">
+          <option value="">Todas</option>
+          @for (p of prioridadeList; track p) {
+            <option [value]="p">{{ p }}</option>
+          }
+        </select>
+
+              <div class="col-md-3">
+        <label class="form-label">Categoria</label>
+        <select class="form-select" [(ngModel)]="filtroCategoria" (change)="aplicarFiltros()">
+          <option value="">Todas</option>
+          @for (c of categoriaList; track c) {
+            <option [value]="c">{{ c }}</option>
+          }
+        </select>
+      </div>
+      
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Solicitante</label>
+        <input type="text" class="form-control" [(ngModel)]="filtroSolicitante" 
+               (input)="aplicarFiltros()" placeholder="Digite o nome...">
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <button class="btn btn-outline-secondary w-100" (click)="limparFiltros()">
+          <i class="bi bi-x-circle"></i> Limpar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-3">
+  <a routerLink="/chamados/novo" class="btn btn-primary">
+    <i class="bi bi-plus-circle"></i> Novo Chamado
+  </a>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Solicitante</th>
+            <th>Responsável</th>
+            <th>Prioridade</th>
+            <th>Categoria</th>
+            <th>Status</th>
+            
+            <th>Data Criação</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (c of chamadosFiltrados; track c.id) {
+            <tr>
+              <td>{{ c.id }}</td>
+              <td>{{ c.titulo }}</td>
+              <td>{{ c.solicitante }}</td>
+              <td>{{ c.responsavel || '-' }}</td>
+              <td>
+                <span class="badge" [ngClass]="{
+                  'bg-danger': c.prioridade === 'ALTA',
+                  'bg-warning text-dark': c.prioridade === 'MEDIA',
+                  'bg-primary': c.prioridade === 'BAIXA'
+                }">{{ c.prioridade }}</span>
+              </td>
+              <td>
+                <span class="badge" [ngClass]="{
+                  'bg-primary': c.status === 'ABERTO',
+                  'bg-warning text-dark': c.status === 'EM_ANDAMENTO',
+                  'bg-success': c.status === 'RESOLVIDO'
+                }">{{ c.status }}</span>
+              </td>
+              
+            <td>
+              <span class="badge bg-secondary">{{ c.categoria }}</span>
+            </td>
+
+              <td>{{ c.dataCriacao | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td>
+                <a [routerLink]="['/chamados/editar', c.id]" class="btn btn-sm btn-outline-primary me-1">
+                  <i class="bi bi-pencil"></i>
+                </a>
+                <button class="btn btn-sm btn-outline-danger" (click)="deletar(c.id)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="8" class="text-center text-muted">Nenhum chamado encontrado</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
