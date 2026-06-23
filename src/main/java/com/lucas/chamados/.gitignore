@@ -1,0 +1,40 @@
+# ============================================
+# BACKEND (Java/Spring)
+# ============================================
+
+target/
+.mvn/
+mvnw
+mvnw.cmd
+.classpath
+.project
+.settings/
+*.class
+*.jar
+*.war
+HELP.md
+
+# Banco (opcional - esconde senhas)
+# src/main/resources/application.properties
+
+# ============================================
+# FRONTEND (Angular/Node)
+# ============================================
+
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.tmp/
+frontend/out-tsc/
+frontend/coverage/
+
+# ============================================
+# GLOBAL
+# ============================================
+
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/
+*.log

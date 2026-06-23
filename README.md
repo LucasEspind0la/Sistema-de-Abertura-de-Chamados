@@ -1,0 +1,54 @@
+# 🛠️ Sistema de Controle de Chamados
+
+Sistema completo de gerenciamento de chamados técnicos.
+
+**Backend:** Java + Spring Boot | **Frontend:** Angular
+
+---
+
+## 🚀 Tecnologias
+
+| Backend | Frontend |
+|---------|----------|
+| Java 17 | Angular 19 |
+| Spring Boot 3.2 | TypeScript |
+| Spring Data JPA | Bootstrap 5 |
+| PostgreSQL | Bootstrap Icons |
+
+---
+
+## 📋 Funcionalidades
+
+- ✅ CRUD de chamados
+- ✅ Filtros por Status, Prioridade e Categoria
+- ✅ Dashboard com estatísticas
+- ✅ Login simples
+- 🔄 Gráficos (em desenvolvimento)
+
+---
+
+## 🖥️ Como rodar
+
+### Backend
+```bash
+./mvnw spring-boot:run
+# Acesse: http://localhost:8080
+
+---
+
+## 🖥️ Como rodar
+
+### Frontend
+```bash
+cd frontend
+npm install
+ng serve
+# Acesse: http://localhost:4200
+
+---
+
+🔑 Login
+
+    Email: admin@chamados.com
+    Senha: 123456
+
