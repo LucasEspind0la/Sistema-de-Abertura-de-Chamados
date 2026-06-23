@@ -10,13 +10,22 @@ Este sistema foi desenvolvido para demonstrar habilidades full-stack em um cená
 Table
 Módulo	Descrição	Status
 🎫 CRUD de Chamados	Criar, listar, editar e excluir chamados	✅ Concluído
+
 🔍 Filtros Avançados	Por status, prioridade e categoria	✅ Concluído
+
 📊 Dashboard	Estatísticas em tempo real	✅ Concluído
+
 🔐 Autenticação	Login com controle de acesso	✅ Concluído
+
 📈 Gráficos	Visualização de dados (Chart.js)	🔄 Em desenvolvimento
+
 📄 Relatórios	Exportação PDF/Excel	🔄 Em desenvolvimento
+
 🌐 Deploy	Publicação online	🔄 Em desenvolvimento
+
+
 🚀 Tecnologias
+
 Backend — Java Spring Boot
 Table
 Tecnologia	Versão	Descrição
