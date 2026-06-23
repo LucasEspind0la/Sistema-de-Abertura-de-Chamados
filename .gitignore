@@ -1,4 +1,41 @@
-HELP.md
+# ============================================
+# BACKEND
+# ============================================
+
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/*.class
+backend/*.jar
+
+# Banco (opcional - esconde senhas)
+# backend/src/main/resources/application.properties
+
+# ============================================
+# FRONTEND
+# ============================================
+
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.tmp/
+frontend/out-tsc/
+frontend/coverage/
+
+# ============================================
+# GLOBAL
+# ============================================
+
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/
+*.logHELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
