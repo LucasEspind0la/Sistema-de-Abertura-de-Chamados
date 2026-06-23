@@ -27,22 +27,40 @@ Módulo	Descrição	Status
 🚀 Tecnologias
 
 Backend — Java Spring Boot
+
 Table
+
 Tecnologia	Versão	Descrição
+
 Java	17	Linguagem principal
+
 Spring Boot	3.2	Framework web
+
 Spring Data JPA	-	Acesso ao banco de dados
+
 PostgreSQL	12+	Banco de dados relacional
+
 Maven	-	Gerenciamento de dependências
+
 Lombok	-	Redução de boilerplate
+
 Frontend — Angular
+
 Table
+
 Tecnologia	Versão	Descrição
+
 Angular	19	Framework SPA
+
 TypeScript	5+	Tipagem estática
+
 Bootstrap	5	Estilização responsiva
+
 Bootstrap Icons	-	Ícones vetoriais
+
 Chart.js	-	Gráficos interativos
+
+
 RxJS	-	Programação reativa
 
 
@@ -50,7 +68,6 @@ Table
 🏠 Login	📊 Dashboard	📝 Lista de Chamados
 (adicione print)	(adicione print)	(adicione print)
 </div>
-
 
 
 🖥️ Como Rodar
@@ -62,15 +79,18 @@ Pré-requisitos
     📦 Maven (ou use ./mvnw)
 
 1️⃣ Clone o repositório
+
 bash
 
 git clone https://github.com/LucasEspind0la/Sistema-de-Abertura-de-Chamados.git
 cd Sistema-de-Abertura-de-Chamados
 
 2️⃣ Configure o Banco de Dados
+
 sql
 
 -- Crie o banco no PostgreSQL
+
 CREATE DATABASE chamados_db;
 
 Edite backend/src/main/resources/application.properties:
@@ -85,13 +105,16 @@ spring.datasource.password=SUA_SENHA
 spring.jpa.hibernate.ddl-auto=update
 
 3️⃣ Inicie o Backend
+
 bash
 
 cd backend
 ./mvnw spring-boot:run
 
 🟢 API disponível em: http://localhost:8080
+
 4️⃣ Inicie o Frontend
+
 bash
 
 cd frontend
@@ -99,27 +122,49 @@ npm install
 ng serve
 
 🟢 Aplicação disponível em: http://localhost:4200
+
 🔑 Credenciais de Teste
+
 Table
+
 Campo	Valor
+
 📧 Email	admin@chamados.com
+
 🔒 Senha	123456
+
 📡 Endpoints da API
+
 Chamados
+
 Table
+
 Método	Endpoint	Descrição
+
 GET	/api/chamados	Listar todos
+
 POST	/api/chamados	Criar novo
+
 PUT	/api/chamados/{id}	Atualizar
+
 DELETE	/api/chamados/{id}	Deletar
+
 GET	/api/chamados/status/{status}	Filtrar por status
+
 GET	/api/chamados/prioridade/{prioridade}	Filtrar por prioridade
+
 GET	/api/chamados/categoria/{categoria}	Filtrar por categoria
+
 Autenticação
+
 Table
+
 Método	Endpoint	Descrição
+
 POST	/api/auth/login	Login de usuário
+
 🐛 Troubleshooting
+
 <details>
 <summary><b>Erro: "Conexão recusada" no frontend</b></summary>
 
@@ -139,9 +184,11 @@ POST	/api/auth/login	Login de usuário
 bash
 
 cd frontend
+
 npm install zone.js
 
 </details>
+
 🗺️ Roadmap
 
     [x] CRUD de chamados
