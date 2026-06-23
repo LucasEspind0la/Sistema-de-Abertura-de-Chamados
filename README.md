@@ -48,28 +48,6 @@ Table
 </div>
 
 
-📁 Arquitetura do Projeto
-plain
-
-sistema-chamados/
-├── 📂 backend/                 # API REST (Spring Boot)
-│   ├── 📂 src/main/java/com/lucas/chamados/
-│   │   ├── 📂 config/          # CORS, segurança
-│   │   ├── 📂 controller/      # Endpoints REST
-│   │   ├── 📂 dto/             # Objetos de transferência
-│   │   ├── 📂 model/           # Entidades JPA
-│   │   ├── 📂 repository/      # Spring Data JPA
-│   │   └── 📂 service/         # Regras de negócio
-│   └── 📄 pom.xml
-│
-├── 📂 frontend/                # Aplicação Web (Angular)
-│   ├── 📂 src/app/
-│   │   ├── 📂 components/      # Telas (Dashboard, Lista, Form)
-│   │   ├── 📂 models/          # Interfaces TypeScript
-│   │   └── 📂 services/        # Chamadas HTTP
-│   └── 📄 angular.json
-│
-└── 📄 README.md
 
 🖥️ Como Rodar
 Pré-requisitos
@@ -168,9 +146,7 @@ npm install zone.js
     [ ] Deploy em produção (Render + Vercel)
     [ ] Notificações por e-mail
 
-👤 Autor
-<div align="center">
-Lucas Espindola
+
 💼 LinkedIn • 💻 GitHub
 Desenvolvedor Java | Angular | Apaixonado por tecnologia e soluções que fazem a diferença
 </div>
