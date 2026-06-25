@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Chamado } from '../models/chamado.model';
-import { Status } from '../models/status.enum';
-import { Prioridade } from '../models/prioridade.enum';
-import { Categoria } from '../models/categoria.enum'; 
+import { Prestador } from '../models/prestador.model';
+import { Categoria } from '../models/categoria.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -35,16 +34,23 @@ export class ChamadoService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  filtrarPorStatus(status: Status): Observable<Chamado[]> {
+  // === FILTROS (já existem) ===
+  filtrarPorStatus(status: string): Observable<Chamado[]> {
     return this.http.get<Chamado[]>(`${this.apiUrl}/status/${status}`);
   }
 
-  filtrarPorPrioridade(prioridade: Prioridade): Observable<Chamado[]> {
+  filtrarPorPrioridade(prioridade: string): Observable<Chamado[]> {
     return this.http.get<Chamado[]>(`${this.apiUrl}/prioridade/${prioridade}`);
   }
 
-  
-  filtrarPorCategoria(categoria: Categoria): Observable<Chamado[]> {
+  filtrarPorCategoria(categoria: string): Observable<Chamado[]> {
     return this.http.get<Chamado[]>(`${this.apiUrl}/categoria/${categoria}`);
   }
+
+  // === NOVO: buscar prestadores disponíveis por categoria ===
+  listarPrestadoresDisponiveis(categoria: Categoria): Observable<Prestador[]> {
+    return this.http.get<Prestador[]>(`${this.apiUrl}/disponiveis/${categoria}`);
+  }
+
+  
 }

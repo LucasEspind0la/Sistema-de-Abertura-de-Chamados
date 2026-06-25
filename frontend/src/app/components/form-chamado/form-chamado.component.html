@@ -38,9 +38,9 @@
           </select>
         </div>
 
-                <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3">
           <label class="form-label">Categoria *</label>
-          <select class="form-select" formControlName="categoria">
+          <select class="form-select" formControlName="categoria" (change)="onCategoriaChange()">
             @for (c of categoriaList; track c) {
               <option [value]="c">{{ c }}</option>
             }
@@ -59,6 +59,59 @@
         <input type="text" class="form-control" formControlName="responsavel"
                placeholder="Técnico responsável (opcional)">
       </div>
+
+      <!-- === NOVO: Escolha de Prestador (só no cadastro) === -->
+      @if (!editando) {
+        <div class="card mb-3 border-info">
+          <div class="card-header bg-info text-white">
+            <i class="bi bi-person-gear"></i> Prestador de Serviço
+          </div>
+          <div class="card-body">
+            
+            <!--  AGORA USA formControlName, não ngModel -->
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" 
+                     formControlName="usarPrestador" id="usarPrestador"
+                     (change)="onTogglePrestador()">
+              <label class="form-check-label" for="usarPrestador">
+                Escolher prestador cadastrado (opcional)
+              </label>
+            </div>
+
+            @if (usarPrestador) {
+              @if (prestadoresDisponiveis.length > 0) {
+                <div class="mb-0">
+                  <label class="form-label">Prestadores disponíveis para {{ chamadoForm.get('categoria')?.value }}</label>
+                  <select class="form-select" formControlName="prestadorId">
+                    <option [value]="null">-- Deixar em aberto --</option>
+                    @for (p of prestadoresDisponiveis; track p.id) {
+                      <option [value]="p.id">{{ p.nome }} ({{ p.empresa }}) - {{ p.telefone }}</option>
+                    }
+                  </select>
+                  <div class="form-text text-muted">
+                    <i class="bi bi-info-circle"></i> 
+                    Se não escolher nenhum, o chamado ficará aguardando alocação.
+                  </div>
+                </div>
+              } @else {
+                <div class="alert alert-warning mb-0">
+                  <i class="bi bi-exclamation-triangle"></i>
+                  Nenhum prestador disponível para {{ chamadoForm.get('categoria')?.value }} no momento.
+                  <br>
+                  <small>O chamado será criado e um prestador poderá ser alocado depois.</small>
+                </div>
+              }
+            } @else {
+              <div class="alert alert-light border mb-0">
+                <i class="bi bi-info-circle"></i>
+                O chamado será criado <strong>sem prestador vinculado</strong>. 
+                Um administrador poderá alocar um prestador depois.
+              </div>
+            }
+
+          </div>
+        </div>
+      }
 
       <div class="d-flex gap-2">
         <button type="submit" class="btn btn-primary">
