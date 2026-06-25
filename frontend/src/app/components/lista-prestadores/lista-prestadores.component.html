@@ -1,0 +1,83 @@
+<h2 class="mb-4"><i class="bi bi-people"></i> Prestadores de Serviço</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label class="form-label">Especialidade</label>
+        <select class="form-select" [(ngModel)]="filtroEspecialidade" (change)="aplicarFiltros()">
+          <option value="">Todas</option>
+          @for (c of categoriaList; track c) {
+            <option [value]="c">{{ c }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Status</label>
+        <select class="form-select" [(ngModel)]="filtroStatus" (change)="aplicarFiltros()">
+          <option value="">Todos</option>
+          @for (s of statusList; track s) {
+            <option [value]="s">{{ s }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-4 d-flex align-items-end">
+        <button class="btn btn-outline-secondary w-100" (click)="limparFiltros()">
+          <i class="bi bi-x-circle"></i> Limpar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-3">
+  <a routerLink="/prestadores/novo" class="btn btn-primary">
+    <i class="bi bi-plus-circle"></i> Novo Prestador
+  </a>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Nome</th>
+            <th>Empresa</th>
+            <th>Telefone</th>
+            <th>Especialidade</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (p of prestadoresFiltrados; track p.id) {
+            <tr>
+              <td><strong>{{ p.nome }}</strong></td>
+              <td>{{ p.empresa }}</td>
+              <td>{{ p.telefone }}</td>
+              <td>
+                <span class="badge bg-info">{{ p.especialidade }}</span>
+              </td>
+              <td>
+                <span class="badge" [ngClass]="getStatusBadgeClass(p.status)">{{ p.status }}</span>
+              </td>
+              <td>
+                <a [routerLink]="['/prestadores/editar', p.id]" class="btn btn-sm btn-outline-primary me-1">
+                  <i class="bi bi-pencil"></i>
+                </a>
+                <button class="btn btn-sm btn-outline-danger" (click)="deletar(p.id)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="text-center text-muted">Nenhum prestador encontrado</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

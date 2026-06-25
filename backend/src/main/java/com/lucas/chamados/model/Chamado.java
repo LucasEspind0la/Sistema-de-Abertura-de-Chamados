@@ -34,6 +34,10 @@ public class Chamado {
 
     private String responsavel;
 
+    @ManyToOne
+    @JoinColumn(name = "prestador_id")
+    private Prestador prestador;
+
     @Column(nullable = false)
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
@@ -104,6 +108,10 @@ public class Chamado {
         this.responsavel = responsavel;
     }
 
+        public Prestador getPrestador() { return prestador; }
+    public void setPrestador(Prestador prestador) { this.prestador = prestador; }
+
+    
     public LocalDateTime getDataCriacao() {
         return dataCriacao;
     }

@@ -1,0 +1,74 @@
+<div class="container mt-4">
+  <h2 class="mb-4">
+    <i class="bi" [class.bi-person-plus]="!editando" [class.bi-pencil]="editando"></i>
+    {{ editando ? 'Editar Prestador' : 'Novo Prestador' }}
+  </h2>
+
+  <div class="card">
+    <div class="card-body">
+      <form (ngSubmit)="salvar()">
+        <div class="row g-3">
+          
+          <div class="col-md-6">
+            <label class="form-label">Nome *</label>
+            <input type="text" class="form-control" [(ngModel)]="prestador.nome" name="nome" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Empresa *</label>
+            <input type="text" class="form-control" [(ngModel)]="prestador.empresa" name="empresa" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">CNPJ</label>
+            <input type="text" class="form-control" [(ngModel)]="prestador.cnpj" name="cnpj" placeholder="00.000.000/0000-00">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Telefone *</label>
+            <input type="text" class="form-control" [(ngModel)]="prestador.telefone" name="telefone" required placeholder="(00) 00000-0000">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">E-mail</label>
+            <input type="email" class="form-control" [(ngModel)]="prestador.email" name="email">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Especialidade *</label>
+            <select class="form-select" [(ngModel)]="prestador.especialidade" name="especialidade" required>
+              @for (cat of categorias; track cat) {
+                <option [value]="cat">{{ cat }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Status *</label>
+            <select class="form-select" [(ngModel)]="prestador.status" name="status" required>
+              @for (s of statusList; track s) {
+                <option [value]="s">{{ s }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Observações</label>
+            <textarea class="form-control" [(ngModel)]="prestador.observacoes" name="observacoes" rows="3" maxlength="1000"></textarea>
+          </div>
+
+        </div>
+
+        <div class="mt-4 d-flex gap-2">
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-lg"></i> Salvar
+          </button>
+          <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">
+            <i class="bi bi-x-lg"></i> Cancelar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
