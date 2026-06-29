@@ -23,7 +23,7 @@ public class ChamadoController {
     private ChamadoService service;
 
     @Autowired
-    private PrestadorRepository prestadorRepository;  // ✅ ADICIONADO
+    private PrestadorRepository prestadorRepository;
 
     // GET /api/chamados
     @GetMapping
