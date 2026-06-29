@@ -76,7 +76,7 @@ public class ChamadoController {
         return service.filtrarPorCategoria(categoria);
     }
 
-    // ✅ ENDPOINT CORRETO — aqui no Controller, não no Repository
+    //  Controller
     @GetMapping("/disponiveis/{categoria}")
     public List<Prestador> listarPrestadoresDisponiveis(@PathVariable Categoria categoria) {
         return prestadorRepository.findByEspecialidadeAndStatus(categoria, StatusPrestador.DISPONIVEL);
